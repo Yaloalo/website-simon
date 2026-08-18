@@ -163,10 +163,6 @@ def normalize_phone(number: str, path: str) -> str:
     return digits
 
 
-def whatsapp_link(number: str, path: str) -> str:
-    digits = normalize_phone(number, path).lstrip("+")
-    return f"https://wa.me/{digits}"
-
 
 def format_price(value: int | float) -> str:
     number = float(value)
@@ -287,7 +283,6 @@ def validate_site_data(data: dict[str, Any]) -> dict[str, Any]:
     }
     site["contact"]["email_link"] = f"mailto:{site['contact']['email']}"
     site["contact"]["phone_link"] = f"tel:{normalized_phone}"
-    site["contact"]["whatsapp_link"] = whatsapp_link(phone, "contact.phone")
 
     impressum = require_dict(legal.get("impressum"), "legal.impressum")
     datenschutz = require_dict(legal.get("datenschutz"), "legal.datenschutz")

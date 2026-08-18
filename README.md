@@ -80,4 +80,4 @@ Die Inhalte in `content/site.json` müssen dafür nicht umgebaut werden.
 2. `Website` öffnen.
 3. Text, Preis oder Bild ändern.
 4. Auf `Save` klicken.
-5. Die Veröffentlichung läuft danach automatisch im Hintergrund.
+5. Die Veröffentlichung nach Dogado läuft danach automatisch im Hintergrund.

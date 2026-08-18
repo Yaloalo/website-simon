@@ -145,26 +145,26 @@ def validate_public_asset_path(public_path_value: str, path: str) -> None:
         )
 
 
-def normalize_phone(number: str) -> str:
-    value = require_string(number, "Telefonnummer")
+def normalize_phone(number: str, path: str) -> str:
+    value = require_string(number, path)
+    raw_digits = re.sub(r"\D", "", value)
+
     if value.startswith("+"):
-        digits = "+" + re.sub(r"\D", "", value)
+        digits = "+" + raw_digits
     elif value.startswith("00"):
-        digits = "+" + re.sub(r"\D", "", value)[2:]
+        digits = "+" + raw_digits[2:]
+    elif value.startswith("0"):
+        digits = "+49" + raw_digits[1:]
     else:
-        digits = re.sub(r"\D", "", value)
+        digits = "+" + raw_digits
 
     if len(re.sub(r"\D", "", digits)) < 6:
-        raise BuildError("Telefonnummer scheint zu kurz zu sein.")
+        raise BuildError(f"{path} muss mindestens 6 Ziffern enthalten. Aktuell: '{value}'.")
     return digits
 
 
-def whatsapp_link(number: str) -> str:
-    if not number.strip():
-        return ""
-    digits = re.sub(r"\D", "", number)
-    if len(digits) < 6:
-        raise BuildError("WhatsApp-Nummer scheint zu kurz zu sein.")
+def whatsapp_link(number: str, path: str) -> str:
+    digits = normalize_phone(number, path).lstrip("+")
     return f"https://wa.me/{digits}"
 
 
@@ -277,18 +277,17 @@ def validate_site_data(data: dict[str, Any]) -> dict[str, Any]:
     }
 
     phone = require_string(contact.get("phone"), "contact.phone")
-    whatsapp = require_string(contact.get("whatsapp", ""), "contact.whatsapp", allow_empty=True)
+    normalized_phone = normalize_phone(phone, "contact.phone")
 
     site["contact"] = {
         "title": require_string(contact.get("title"), "contact.title"),
         "text_html": require_string(contact.get("text_html"), "contact.text_html"),
         "email": validate_email(contact.get("email"), "contact.email"),
         "phone": phone,
-        "whatsapp": whatsapp,
     }
     site["contact"]["email_link"] = f"mailto:{site['contact']['email']}"
-    site["contact"]["phone_link"] = f"tel:{normalize_phone(phone)}"
-    site["contact"]["whatsapp_link"] = whatsapp_link(whatsapp) if whatsapp else ""
+    site["contact"]["phone_link"] = f"tel:{normalized_phone}"
+    site["contact"]["whatsapp_link"] = whatsapp_link(phone, "contact.phone")
 
     impressum = require_dict(legal.get("impressum"), "legal.impressum")
     datenschutz = require_dict(legal.get("datenschutz"), "legal.datenschutz")

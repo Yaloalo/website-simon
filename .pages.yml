@@ -270,13 +270,10 @@ content:
             type: string
             required: true
           - name: phone
-            label: Telefon
+            label: Telefon / WhatsApp
             type: string
             required: true
-          - name: whatsapp
-            label: WhatsApp
-            type: string
-            description: Möglichst im internationalen Format, z. B. +49 178 1234567.
+            description: Diese eine Nummer wird für Anruf und WhatsApp verwendet. Internationale Formate wie +49 ... sind ideal; deutsche Mobilnummern mit 0 funktionieren ebenfalls.
       - name: legal
         label: Rechtliches
         type: object

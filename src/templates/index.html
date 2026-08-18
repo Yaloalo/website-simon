@@ -145,14 +145,10 @@
         </div>
         <div class="contact-item">
           <p class="contact-label">Telefon / WhatsApp</p>
-          {% if site.contact.whatsapp_link %}
-            <div class="contact-actions">
-              <a href="{{ site.contact.phone_link }}">Anrufen: {{ site.contact.phone }}</a>
-              <a href="{{ site.contact.whatsapp_link }}">WhatsApp: {{ site.contact.whatsapp }}</a>
-            </div>
-          {% else %}
-            <a href="{{ site.contact.phone_link }}">{{ site.contact.phone }}</a>
-          {% endif %}
+          <div class="contact-actions">
+            <a href="{{ site.contact.phone_link }}">Anrufen: {{ site.contact.phone }}</a>
+            <a href="{{ site.contact.whatsapp_link }}">WhatsApp: {{ site.contact.phone }}</a>
+          </div>
         </div>
       </div>
     </div>

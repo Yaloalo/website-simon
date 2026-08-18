@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page_title }}</title>
+    <meta name="description" content="{{ page_description }}">
+    <meta property="og:title" content="{{ page_title }}">
+    <meta property="og:description" content="{{ page_description }}">
+    <meta property="og:type" content="website">
+    {% if og_image %}
+      <meta property="og:image" content="{{ og_image }}">
+    {% endif %}
+    <meta name="theme-color" content="#f3eee6">
+    <link rel="icon" href="{{ url_for('/images/favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('/css/main.css') }}">
+    <script defer src="{{ url_for('/js/main.js') }}"></script>
+  </head>
+  <body class="{{ body_class }}">
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a class="brand" href="{{ '#top' if current_page == 'home' else url_for('/index.html') }}">{{ site.navigation.brand }}</a>
+        <button class="nav-toggle" type="button" hidden aria-controls="hauptnavigation" aria-expanded="false">Menü</button>
+        <nav class="site-nav" id="hauptnavigation" aria-label="Hauptnavigation" data-nav>
+          <ul class="nav-list">
+            {% for item in navigation_items if item.href != '#kontakt' %}
+              <li>
+                <a href="{{ item.href if current_page == 'home' else url_for('/index.html') ~ item.href }}">{{ item.label }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+          <a class="btn btn--small" href="{{ '#kontakt' if current_page == 'home' else url_for('/index.html') ~ '#kontakt' }}">{{ site.navigation.cta_label }}</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <p class="footer-title">{{ site.navigation.brand }}</p>
+          <p class="footer-text">{{ site.hero.title }}</p>
+        </div>
+        <div>
+          <p class="footer-title">Praxis</p>
+          <address class="footer-text">
+            {{ site.practice.name }}<br>
+            {{ site.practice.street }}<br>
+            {{ site.practice.city }}
+          </address>
+        </div>
+        <div>
+          <p class="footer-title">Kontakt</p>
+          <ul class="footer-links">
+            <li><a href="{{ site.contact.email_link }}">E-Mail schreiben</a></li>
+            <li>
+              <a href="{{ site.contact.phone_link }}">Telefon / WhatsApp: {{ site.contact.phone }}</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-title">Rechtliches</p>
+          <ul class="footer-links">
+            <li><a href="{{ url_for('/impressum.html') }}">Impressum</a></li>
+            <li><a href="{{ url_for('/datenschutz.html') }}">Datenschutz</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>© {{ current_year }} {{ site.navigation.brand }}</p>
+      </div>
+    </footer>
+  </body>
+</html>

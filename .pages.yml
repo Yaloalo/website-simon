@@ -1,0 +1,315 @@
+media:
+  - name: uploads
+    label: Bilder & Uploads
+    input: static/uploads
+    output: /uploads
+    rename: safe
+    categories:
+      - image
+
+settings:
+  hide: true
+  content:
+    merge: true
+
+content:
+  - name: website
+    label: Website
+    type: file
+    path: content/site.json
+    format: json
+    description: Inhalte, Preise, Kontaktdaten und Bilder der Website.
+    operations:
+      create: false
+      delete: false
+    fields:
+      - name: meta
+        label: Meta
+        type: object
+        fields:
+          - name: site_title
+            label: Seitentitel
+            type: string
+            required: true
+          - name: description
+            label: SEO-Beschreibung
+            type: text
+            required: true
+      - name: navigation
+        label: Kopfbereich
+        type: object
+        fields:
+          - name: brand
+            label: Name im Kopfbereich
+            type: string
+            required: true
+          - name: cta_label
+            label: Kontakt-Button
+            type: string
+            required: true
+      - name: hero
+        label: Startseite
+        type: object
+        fields:
+          - name: eyebrow
+            label: Unterzeile über der Überschrift
+            type: string
+            required: true
+          - name: title
+            label: Überschrift
+            type: string
+            required: true
+          - name: text_html
+            label: Text
+            type: rich-text
+            required: true
+            options:
+              format: html
+              switcher: false
+              media: false
+          - name: image
+            label: Bild
+            type: object
+            fields:
+              - name: src
+                label: Bild
+                type: image
+                options:
+                  media: uploads
+              - name: alt
+                label: Alternativtext
+                type: string
+                description: Kurze Beschreibung des Bildes für Barrierefreiheit.
+      - name: approach
+        label: Meine Arbeitsweise
+        type: object
+        fields:
+          - name: title
+            label: Überschrift
+            type: string
+            required: true
+          - name: text_html
+            label: Text
+            type: rich-text
+            required: true
+            options:
+              format: html
+              switcher: false
+              media: false
+      - name: about
+        label: Über mich
+        type: object
+        fields:
+          - name: title
+            label: Überschrift
+            type: string
+            required: true
+          - name: text_html
+            label: Text
+            type: rich-text
+            required: true
+            options:
+              format: html
+              switcher: false
+              media: false
+          - name: image
+            label: Portraitbild
+            type: object
+            fields:
+              - name: src
+                label: Bild
+                type: image
+                options:
+                  media: uploads
+              - name: alt
+                label: Alternativtext
+                type: string
+      - name: qualifications
+        label: Werdegang
+        type: object
+        fields:
+          - name: title
+            label: Überschrift
+            type: string
+            required: true
+          - name: items
+            label: Stationen
+            type: object
+            list:
+              min: 1
+              sortable: true
+              collapsible: true
+            fields:
+              - name: title
+                label: Titel
+                type: string
+                required: true
+              - name: text
+                label: Text
+                type: text
+                required: true
+      - name: offer
+        label: Angebot & Preise
+        type: object
+        fields:
+          - name: title
+            label: Überschrift
+            type: string
+            required: true
+          - name: intro_html
+            label: Einleitung
+            type: rich-text
+            required: true
+            options:
+              format: html
+              switcher: false
+              media: false
+          - name: topics
+            label: Themen
+            type: string
+            list:
+              min: 1
+              sortable: true
+            required: true
+          - name: session_duration
+            label: Dauer in Minuten
+            type: number
+            required: true
+          - name: price
+            label: Preis
+            type: number
+            required: true
+          - name: pricing_note_html
+            label: Hinweis zum Honorar
+            type: rich-text
+            required: true
+            options:
+              format: html
+              switcher: false
+              media: false
+          - name: billing_note_html
+            label: Abrechnung / Zahlung
+            type: rich-text
+            required: true
+            options:
+              format: html
+              switcher: false
+              media: false
+          - name: online_available
+            label: Online-Sitzungen
+            type: boolean
+            required: true
+          - name: online_note
+            label: Hinweis zu Online-Sitzungen
+            type: string
+          - name: confidentiality_note_html
+            label: Schweigepflicht / Vertraulichkeit
+            type: rich-text
+            required: true
+            options:
+              format: html
+              switcher: false
+              media: false
+      - name: practice
+        label: Praxis
+        type: object
+        fields:
+          - name: title
+            label: Überschrift
+            type: string
+            required: true
+          - name: name
+            label: Praxisname
+            type: string
+            required: true
+          - name: street
+            label: Straße / Hausnummer
+            type: string
+            required: true
+          - name: city
+            label: PLZ / Ort
+            type: string
+            required: true
+          - name: additional_text_html
+            label: Zusätzlicher Text
+            type: rich-text
+            options:
+              format: html
+              switcher: false
+              media: false
+          - name: image
+            label: Praxisbild
+            type: object
+            fields:
+              - name: src
+                label: Bild
+                type: image
+                options:
+                  media: uploads
+              - name: alt
+                label: Alternativtext
+                type: string
+      - name: contact
+        label: Kontakt
+        type: object
+        fields:
+          - name: title
+            label: Überschrift
+            type: string
+            required: true
+          - name: text_html
+            label: Text
+            type: rich-text
+            required: true
+            options:
+              format: html
+              switcher: false
+              media: false
+          - name: email
+            label: E-Mail
+            type: string
+            required: true
+          - name: phone
+            label: Telefon
+            type: string
+            required: true
+          - name: whatsapp
+            label: WhatsApp
+            type: string
+            description: Möglichst im internationalen Format, z. B. +49 178 1234567.
+      - name: legal
+        label: Rechtliches
+        type: object
+        fields:
+          - name: impressum
+            label: Impressum
+            type: object
+            fields:
+              - name: title
+                label: Überschrift
+                type: string
+                required: true
+              - name: body_html
+                label: Inhalt
+                type: rich-text
+                required: true
+                options:
+                  format: html
+                  switcher: false
+                  media: false
+          - name: datenschutz
+            label: Datenschutz
+            type: object
+            fields:
+              - name: title
+                label: Überschrift
+                type: string
+                required: true
+              - name: body_html
+                label: Inhalt
+                type: rich-text
+                required: true
+                options:
+                  format: html
+                  switcher: false
+                  media: false

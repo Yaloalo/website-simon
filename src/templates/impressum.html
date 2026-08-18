@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="section legal-shell" aria-labelledby="impressum-title">
+    <div class="container narrow">
+      <article class="surface legal-card stack">
+        <p class="section-kicker">Rechtliches</p>
+        <h1 id="impressum-title">{{ site.legal.impressum.title }}</h1>
+        <div class="prose">{{ site.legal.impressum.body_html | safe }}</div>
+      </article>
+    </div>
+  </section>
+{% endblock %}

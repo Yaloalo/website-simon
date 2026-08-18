@@ -1,0 +1,104 @@
+name: Build and deploy
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dogado-production
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build static website
+        run: python build.py
+
+      - name: Validate Dogado deployment configuration
+        env:
+          DOGADO_HOST: ${{ secrets.DOGADO_HOST }}
+          DOGADO_USER: ${{ secrets.DOGADO_USER }}
+          DOGADO_PORT: ${{ secrets.DOGADO_PORT }}
+          DOGADO_SSH_KEY: ${{ secrets.DOGADO_SSH_KEY }}
+          DOGADO_TARGET_PATH: ${{ secrets.DOGADO_TARGET_PATH }}
+        run: |
+          set -euo pipefail
+
+          missing=0
+          for name in DOGADO_HOST DOGADO_USER DOGADO_PORT DOGADO_SSH_KEY DOGADO_TARGET_PATH; do
+            if [ -z "${!name:-}" ]; then
+              echo "::error title=Missing secret::$name is not configured."
+              missing=1
+            fi
+          done
+
+          if [ "$missing" -ne 0 ]; then
+            exit 1
+          fi
+
+          if ! [[ "$DOGADO_PORT" =~ ^[0-9]+$ ]]; then
+            echo "::error title=Invalid port::DOGADO_PORT must be a numeric SSH port."
+            exit 1
+          fi
+
+          case "$DOGADO_TARGET_PATH" in
+            "/"|"~"|"."|"./"|"~/")
+              echo "::error title=Unsafe target path::DOGADO_TARGET_PATH is too broad for rsync --delete."
+              exit 1
+              ;;
+          esac
+
+          if [ ! -d dist ] || [ ! -f dist/index.html ]; then
+            echo "::error title=Missing build output::dist/ was not generated correctly."
+            exit 1
+          fi
+
+      - name: Configure SSH
+        env:
+          DOGADO_HOST: ${{ secrets.DOGADO_HOST }}
+          DOGADO_PORT: ${{ secrets.DOGADO_PORT }}
+          DOGADO_SSH_KEY: ${{ secrets.DOGADO_SSH_KEY }}
+        run: |
+          set -euo pipefail
+
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DOGADO_SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+          ssh-keyscan -p "$DOGADO_PORT" -H "$DOGADO_HOST" >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Deploy dist/ to Dogado via rsync
+        env:
+          DOGADO_HOST: ${{ secrets.DOGADO_HOST }}
+          DOGADO_USER: ${{ secrets.DOGADO_USER }}
+          DOGADO_PORT: ${{ secrets.DOGADO_PORT }}
+          DOGADO_TARGET_PATH: ${{ secrets.DOGADO_TARGET_PATH }}
+        run: |
+          set -euo pipefail
+
+          target_path="${DOGADO_TARGET_PATH%/}/"
+          escaped_target_path="${target_path// /\\ }"
+          destination="${DOGADO_USER}@${DOGADO_HOST}:${escaped_target_path}"
+
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/id_ed25519 -p ${DOGADO_PORT} -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
+            dist/ "$destination"

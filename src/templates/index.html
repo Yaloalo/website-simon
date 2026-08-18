@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="hero section section--hero" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+      <div class="stack hero-copy" data-reveal>
+        <p class="eyebrow">{{ site.hero.eyebrow }}</p>
+        <h1 id="hero-title">{{ site.hero.title }}</h1>
+        <div class="prose lead">{{ site.hero.text_html | safe }}</div>
+        <div class="button-row">
+          <a class="btn" href="#kontakt">{{ site.navigation.cta_label }}</a>
+          <a class="btn btn--ghost" href="#angebot">{{ site.offer.title }}</a>
+        </div>
+      </div>
+
+      <aside class="surface hero-panel" data-reveal aria-label="Praxisinformationen">
+        {% if site.hero.image.src %}
+          <figure class="media-frame media-frame--hero">
+            <img src="{{ url_for(site.hero.image.src) }}" alt="{{ site.hero.image.alt }}">
+          </figure>
+        {% endif %}
+        <div class="hero-summary">
+          <p class="summary-label">Rahmen</p>
+          <ul class="summary-list">
+            <li><span>Ort</span><strong>{{ site.practice.city }}</strong></li>
+            <li><span>Dauer</span><strong>{{ site.offer.session_duration }} Min.</strong></li>
+            <li><span>Honorar</span><strong>{{ site.offer.price_display }}</strong></li>
+            <li>
+              <span>Online</span>
+              <strong>{{ 'Auf Wunsch möglich' if site.offer.online_available else 'Nicht angeboten' }}</strong>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--band" id="arbeitsweise" aria-labelledby="arbeitsweise-title">
+    <div class="container narrow stack section-card" data-reveal>
+      <p class="section-kicker">Begleitung</p>
+      <h2 id="arbeitsweise-title">{{ site.approach.title }}</h2>
+      <div class="prose">{{ site.approach.text_html | safe }}</div>
+    </div>
+  </section>
+
+  <section class="section section--divided" id="ueber-mich" aria-labelledby="ueber-mich-title">
+    <div class="container split split-panel{% if not site.about.image.src %} split--single{% endif %}">
+      <div class="stack" data-reveal>
+        <p class="section-kicker">Person</p>
+        <h2 id="ueber-mich-title">{{ site.about.title }}</h2>
+        <div class="prose">{{ site.about.text_html | safe }}</div>
+      </div>
+      {% if site.about.image.src %}
+        <figure class="media-frame media-frame--portrait" data-reveal>
+          <img src="{{ url_for(site.about.image.src) }}" alt="{{ site.about.image.alt }}">
+        </figure>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="section section--band" id="werdegang" aria-labelledby="werdegang-title">
+    <div class="container stack">
+      <div class="stack stack--compact narrow" data-reveal>
+        <p class="section-kicker">Qualifikation</p>
+        <h2 id="werdegang-title">{{ site.qualifications.title }}</h2>
+      </div>
+      <div class="card-grid card-grid--qualifications">
+        {% for item in site.qualifications['items'] %}
+          <article class="surface card" data-reveal>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.text }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--divided" id="angebot" aria-labelledby="angebot-title">
+    <div class="container split offer-layout split-panel">
+      <div class="stack" data-reveal>
+        <p class="section-kicker">Angebot</p>
+        <h2 id="angebot-title">{{ site.offer.title }}</h2>
+        <div class="prose">{{ site.offer.intro_html | safe }}</div>
+        <ul class="topic-list">
+          {% for topic in site.offer.topics %}
+            <li>{{ topic }}</li>
+          {% endfor %}
+        </ul>
+        <div class="prose note-stack">
+          {% if site.offer.online_available and site.offer.online_note %}
+            <p><strong>Online:</strong> {{ site.offer.online_note }}</p>
+          {% endif %}
+          {{ site.offer.confidentiality_note_html | safe }}
+        </div>
+      </div>
+
+      <aside class="surface pricing-card stack stack--compact" data-reveal>
+        <p class="pricing-kicker">Honorar & Rahmen</p>
+        <div class="pricing-main">
+          <p class="pricing-value">{{ site.offer.price_display }}</p>
+          <p class="pricing-meta">Einzelsession · {{ site.offer.session_duration }} Minuten</p>
+        </div>
+        <div class="prose prose--small">{{ site.offer.pricing_note_html | safe }}</div>
+        <div class="prose prose--small">{{ site.offer.billing_note_html | safe }}</div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--band" id="praxis" aria-labelledby="praxis-title">
+    <div class="container split split-panel{% if not site.practice.image.src %} split--single{% endif %}">
+      <div class="stack" data-reveal>
+        <p class="section-kicker">Ort</p>
+        <h2 id="praxis-title">{{ site.practice.title }}</h2>
+        <div class="surface address-card">
+          <p class="address-name">{{ site.practice.name }}</p>
+          <address>
+            {{ site.practice.street }}<br>
+            {{ site.practice.city }}
+          </address>
+        </div>
+        {% if site.practice.additional_text_html %}
+          <div class="prose">{{ site.practice.additional_text_html | safe }}</div>
+        {% endif %}
+      </div>
+      {% if site.practice.image.src %}
+        <figure class="media-frame media-frame--landscape" data-reveal>
+          <img src="{{ url_for(site.practice.image.src) }}" alt="{{ site.practice.image.alt }}">
+        </figure>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="section section--divided" id="kontakt" aria-labelledby="kontakt-title">
+    <div class="container contact-layout contact-panel">
+      <div class="stack" data-reveal>
+        <p class="section-kicker">Kontakt</p>
+        <h2 id="kontakt-title">{{ site.contact.title }}</h2>
+        <div class="prose">{{ site.contact.text_html | safe }}</div>
+      </div>
+
+      <div class="surface contact-card stack stack--compact" data-reveal>
+        <div class="contact-item">
+          <p class="contact-label">E-Mail</p>
+          <a href="{{ site.contact.email_link }}">{{ site.contact.email }}</a>
+        </div>
+        <div class="contact-item">
+          <p class="contact-label">Telefon / WhatsApp</p>
+          {% if site.contact.whatsapp_link %}
+            <div class="contact-actions">
+              <a href="{{ site.contact.phone_link }}">Anrufen: {{ site.contact.phone }}</a>
+              <a href="{{ site.contact.whatsapp_link }}">WhatsApp: {{ site.contact.whatsapp }}</a>
+            </div>
+          {% else %}
+            <a href="{{ site.contact.phone_link }}">{{ site.contact.phone }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

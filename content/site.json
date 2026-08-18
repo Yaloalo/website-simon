@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "site_title": "Simon Marten – Heilpraktiker für Psychotherapie",
+    "description": "Gestaltorientierte Begleitung in herausfordernden Lebenssituationen in Karlsruhe-Durlach – im Hier & Jetzt, in Kontakt und in Veränderung."
+  },
+  "navigation": {
+    "brand": "Simon Marten",
+    "cta_label": "Kontakt"
+  },
+  "hero": {
+    "eyebrow": "Heilpraktiker für Psychotherapie · Gestaltorientierter Ansatz",
+    "title": "Hier & Jetzt. In Kontakt. Sein.",
+    "text_html": "<p>Besonders in unserer schnelllebigen Zeit voller Ablenkungen passiert es leicht, den Kontakt zu sich selbst – und damit auch zu anderen Mitmenschen – zu verlieren. Oft spüren wir das als Orientierungslosigkeit, innere Leere oder anhaltende Anspannung. Wenn diese Gefühle schwer werden oder sich in psychischen und körperlichen Belastungen zeigen, kann externe Unterstützung wertvoll sein.</p><p>Als Heilpraktiker für Psychotherapie mit gestaltorientiertem Ansatz begleite ich Menschen in herausfordernden Lebenssituationen. Der Fokus meiner Arbeit liegt auf den Mustern, die sich in Beziehung im Hier &amp; Jetzt zeigen. Mit einem wertfreien und zugewandten Blick erkunden wir gemeinsam, welche Gefühle oder Bedürfnisse im Kontakt spürbar werden. Durch dieses Bewusstsein entsteht ein neuer Entscheidungsraum. Die Möglichkeit zur Veränderung.</p><p>Gerne schaue ich mit dir gemeinsam hin. Nicht als Experte für dein Leben, sondern als Begleiter, damit du deinen ganz individuellen Weg findest.</p>",
+    "image": {
+      "src": "",
+      "alt": ""
+    }
+  },
+  "approach": {
+    "title": "Meine Arbeitsweise",
+    "text_html": "<p>Meine Arbeitsweise ist gestaltorientiert, das bedeutet wir richten unsere Aufmerksamkeit auf das, was jetzt gerade zwischen uns lebendig ist. Gemeinsam erforschen wir deine Gefühle, Gedanken und (Überlebens-)strategien, um neue Möglichkeiten im Umgang mit Herausforderungen zu entwickeln. Eigenverantwortung ist ein wesentlicher Bestandteil meiner Arbeit. Ich verstehe mich als Begleiter auf Augenhöhe – nicht als jemand, der fertige Lösungen vorgibt, sondern als jemand, der dich dabei unterstützt, deine eigenen Antworten zu finden.</p>"
+  },
+  "about": {
+    "title": "Über mich",
+    "text_html": "<p>Die Suche nach meiner Wahrheit war nicht immer einfach, hat mich aber immer tiefer in die Verbindung zu mir selbst gebracht. Nach meiner Ausbildung zum Industriekaufmann und einigen Jahren im Beruf brachten mich persönliche Krisen, tiefgreifende Erfahrungen und das Hinhören auf meine eigenen Bedürfnisse dazu, meinem Leben eine neue Richtung zu geben. Ich reiste in der Welt herum, probierte verschiedenste Lebensmodelle aus und orientierte mich auch beruflich grundlegend um.</p><p>Meine persönlichen Herausforderungen und mein innerer Schmerz ließen mich schließlich hinschauen. Erst durch den Kontakt zu meinen verletzten inneren Anteilen und das Durchleben meiner Gefühle konnte sich in mir etwas wandeln. Langsam begann ich, mich zu ent-wickeln.</p><p>Insbesondere durch die Gestaltausbildung bei meinen Lehrern Ellen &amp; Christopher Tarnow durfte ich viel über mich und meine Überlebensstrategien lernen. Als ich begann, meinen Ängsten ins Auge zu sehen und meine unerfüllten Sehnsüchte zu betrauern, realisierte ich, dass es im Hier &amp; Jetzt immer Möglichkeiten zur Veränderung gibt.</p><p>Aus tiefstem Herzen möchte ich Menschen bei der Reise zu sich selbst begleiten. Es erfüllt mich mit Sinn, Menschen dabei zu unterstützen, mit ihrem Wesenskern in Berührung zu kommen und ihm Ausdruck zu verleihen.</p><p>Heute lebe ich gemeinsam mit meiner Partnerin und unserem ungeborenen Kind in Karlsruhe – ein Lebensabschnitt, der mich täglich neu darin erinnert, wie wertvoll echte Verbindung, Ankommen und Wachstum sind.</p>",
+    "image": {
+      "src": "",
+      "alt": ""
+    }
+  },
+  "qualifications": {
+    "title": "Mein therapeutischer Werdegang",
+    "items": [
+      {
+        "title": "Kaufmännische Ausbildung & Berufserfahrung",
+        "text": "Industriekaufmann"
+      },
+      {
+        "title": "Praxiserfahrung",
+        "text": "Mehrjährige Tätigkeit im Ambulant Betreuten Wohnen (ABW) für psychisch erkrankte Menschen & im forensischen Kontext"
+      },
+      {
+        "title": "Erlaubnis zur Ausübung der Heilkunde",
+        "text": "Heilpraktiker für Psychotherapie"
+      },
+      {
+        "title": "Fachausbildung",
+        "text": "Mehrjährige Gestaltausbildung bei Ellen & Christopher Tarnow (Abschluss als Gestaltberater, Vertiefung zum Gestalttherapeuten)"
+      }
+    ]
+  },
+  "offer": {
+    "title": "Angebot / Preise",
+    "intro_html": "<p>Mein Angebote richtet sich an erwachsene Menschen, die Begleitung in herausfordernden Lebensphasen oder den Wunsch nach persönlichem Wachstum verspüren.</p><p>Als Heilpraktiker für Psychotherapie unterstütze ich dich unter anderem bei:</p>",
+    "topics": [
+      "Selbstwertthemen & inneren Kritiker-Stimmen",
+      "Orientierungslosigkeit & Sinnfragen",
+      "Stress, Überforderung & Erschöpfung",
+      "Ängsten & Anspannung",
+      "Depressiven Verstimmungen",
+      "Lebenskrisen & Umbruchphasen",
+      "Wunsch nach persönlicher Entfaltung & Wachstum"
+    ],
+    "session_duration": 50,
+    "price": 80,
+    "pricing_note_html": "<p>Sollte das Honorar deine finanziellen Möglichkeiten aktuell übersteigen, sprich mich gerne an. Wir schauen gemeinsam nach einer stimmigen Lösung.</p>",
+    "billing_note_html": "<p>Hinweis zur Abrechnung: Mein Angebot richtet sich an Selbstzahler. Eine Übernahme durch die Krankenkasse ist in der Regel nicht möglich.</p>",
+    "online_available": true,
+    "online_note": "Auf Wunsch biete ich auch Online-Sitzungen an.",
+    "confidentiality_note_html": "<p>Als Heilpraktiker für Psychotherapie unterliege ich selbstverständlich der therapeutischen Schweigepflicht. Alles, was wir im geschützten Raum besprechen, bleibt absolut vertraulich.</p>"
+  },
+  "practice": {
+    "title": "Praxis",
+    "name": "OMEGA – Zentrum für Persönliche Entwicklung",
+    "street": "Pfinztalstraße 73",
+    "city": "76227 Karlsruhe-Durlach",
+    "additional_text_html": "",
+    "image": {
+      "src": "",
+      "alt": ""
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "text_html": "<p>Wenn du Fragen hast oder wissen möchtest, ob eine Zusammenarbeit für dich passt, melde dich gerne ganz unverbindlich bei mir.</p><p>Schreib mir gerne eine kurze Nachricht oder Mail – ich melde mich in der Regel innerhalb von 24 Stunden bei dir zurück.</p>",
+    "email": "simonmarten96@gmail.com",
+    "phone": "0178 6011831",
+    "whatsapp": "+49 178 6011831"
+  },
+  "legal": {
+    "impressum": {
+      "title": "Impressum",
+      "body_html": "<p><strong>TODO:</strong> Dieses Impressum muss vor der Veröffentlichung mit den vollständigen rechtlichen Angaben ergänzt werden.</p><ul><li>Vollständiger Name und ladungsfähige Anschrift</li><li>Kontaktdaten</li><li>Berufsbezeichnung und zuständige Aufsichtsbehörde</li><li>Angaben nach § 5 TMG und ggf. weitere Pflichtangaben</li></ul>"
+    },
+    "datenschutz": {
+      "title": "Datenschutz",
+      "body_html": "<p><strong>TODO:</strong> Diese Datenschutzerklärung muss vor der Veröffentlichung rechtlich geprüft und vollständig ergänzt werden.</p><ul><li>Verantwortliche Stelle</li><li>Zwecke und Rechtsgrundlagen der Verarbeitung</li><li>Hosting der statischen Website bei Dogado</li><li>Kontaktaufnahme per E-Mail, Telefon oder WhatsApp</li><li>Speicherdauer und Betroffenenrechte</li></ul>"
+    }
+  }
+}

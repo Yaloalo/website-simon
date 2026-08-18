@@ -1,6 +1,6 @@
 {
   "meta": {
-    "site_title": "Simon Marten – Heilpraktiker für Psychotherapie AAAAA",
+    "site_title": "Simon Marten – Heilpraktiker für Psychotherapie",
     "description": "Gestaltorientierte Begleitung in herausfordernden Lebenssituationen in Karlsruhe-Durlach – im Hier & Jetzt, in Kontakt und in Veränderung."
   },
   "navigation": {
@@ -72,8 +72,7 @@
     "title": "Kontakt",
     "text_html": "<p>Wenn du Fragen hast oder wissen möchtest, ob eine Zusammenarbeit für dich passt, melde dich gerne ganz unverbindlich bei mir.</p><p>Schreib mir gerne eine kurze Nachricht oder Mail – ich melde mich in der Regel innerhalb von 24 Stunden bei dir zurück.</p>",
     "email": "simonmarten96@gmail.com",
-    "phone": "0178 6011831",
-    "whatsapp": "+49 178 6011831"
+    "phone": "TODO"
   },
   "legal": {
     "impressum": {

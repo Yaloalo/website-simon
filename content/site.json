@@ -72,7 +72,10 @@
     "name": "OMEGA – Zentrum für Persönliche Entwicklung",
     "street": "Pfinztalstraße 73",
     "city": "76227 Karlsruhe-Durlach",
-    "additional_text_html": "<p></p>"
+    "additional_text_html": "<p></p>",
+    "image": {
+      "src": "/uploads/mg9119.jpg"
+    }
   },
   "contact": {
     "title": "Kontakt",

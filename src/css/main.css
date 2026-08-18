@@ -563,6 +563,17 @@ section[id] {
   }
 }
 
+@media (max-width: 47.99rem) {
+  #praxis .media-frame--landscape {
+    aspect-ratio: auto;
+    min-height: 0;
+  }
+
+  #praxis .media-frame--landscape img {
+    height: auto;
+  }
+}
+
 @media (min-width: 48rem) {
   .footer-grid,
   .card-grid--qualifications {
